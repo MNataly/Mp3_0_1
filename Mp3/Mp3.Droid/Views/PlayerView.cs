@@ -27,7 +27,7 @@ namespace Mp3.Droid.Views
              PlayTrack(mess.FilePath);
         }
 
-        public void PlayTrack(string filePath)
+        public async  void PlayTrack(string filePath)
         {
             //player = new MediaPlayer();
 
@@ -37,12 +37,17 @@ namespace Mp3.Droid.Views
             }
             else
             {
-                player = new MediaPlayer();
                 player.Reset();
-                player.SetDataSource(filePath);
-                player.Prepare();
-                player.Start();
             }
+
+            // This method works better than setting the file path in SetDataSource. Don't know why.
+            Java.IO.File file = new Java.IO.File(filePath);
+            Java.IO.FileInputStream fis = new Java.IO.FileInputStream(file);
+            await player.SetDataSourceAsync(fis.FD);
+
+            //player.SetDataSource(filePath);
+            player.Prepare();
+            player.Start();
         }
     }
 
