@@ -18,7 +18,7 @@ namespace Mp3.Core.ViewModels
            
         }
 
-        public class Nav
+        public class PlayerData
         {
             public int Id { get; set; }
             public string Name { get; set; }

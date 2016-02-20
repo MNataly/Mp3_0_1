@@ -122,9 +122,9 @@ namespace Mp3.Core.ViewModels
             {
                 return new MvxCommand<DataMusic>((item) =>
                 {
-                    ShowViewModel<PlayerViewModel>();
+                    ShowViewModel<PlayerViewModel>(new PlayerViewModel.PlayerData(){Id = item.Id, Name = item.Name, FilePath = item.FilePath});
                     
-                    //MyResolve(item);
+                    
                 });
                 //return new MvxCommand<DataMusic>(item =>ShowViewModel<PlayerViewModel>(new PlayerViewModel.Nav(){Id = item.Id,Name = item.Name,FilePath = item.FilePath}));
             }
