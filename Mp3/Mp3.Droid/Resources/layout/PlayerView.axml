@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="fill_parent"
@@ -8,37 +8,67 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dip"
-        android:src="@drawable/adele" />
+        android:src="@drawable/adele"
+        android:id="@+id/Image"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
     <TextView
-        android:text="Name"
+        android:text="Song title"
+        android:textSize="30dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="Text Item.Name"
+        android:id="@+id/Name"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/Image" />
+    <TextView
+        android:text="Artist"
         android:textSize="20dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        local:MvxBind="Text Item.Name" />
+        local:MvxBind="Text Item.Name"
+        android:id="@+id/Artist"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/Name" />
     <SeekBar
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        local:MvxBind="Progress " />
-    <LinearLayout
+        local:MvxBind="Progress "
+        android:id="@+id/Pos"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/Btns" />
+    <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/Btns"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/Vol">
         <Button
             android:text="Prev"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:id="@+id/Prev"
+            android:layout_alignParentLeft="true" />
         <Button
             android:text="Play!"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            local:MvxBind="Click DoPlayCommand" />
+            local:MvxBind="Click DoPlayCommand"
+            android:id="@+id/Play"
+            android:layout_toRightOf="@+id/Prev"
+            android:layout_toLeftOf="@+id/Next" />
         <Button
             android:text="Next"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:id="@+id/Next"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
     <SeekBar
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        local:MvxBind="Progress" />
-</LinearLayout>
+        local:MvxBind="Progress"
+        android:id="@+id/Vol"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -37,6 +37,7 @@ namespace Mp3.Droid.Views
             }
             else
             {
+                player = new MediaPlayer();
                 player.Reset();
                 player.SetDataSource(filePath);
                 player.Prepare();
