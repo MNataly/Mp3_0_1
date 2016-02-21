@@ -30,9 +30,9 @@ namespace Mp3.Core.ViewModels
         {
             _item = dm;
             
-            //var listServise = Mvx.Resolve<IMusicListViewModel>();
+            var listServise = Mvx.Resolve<IMusicListViewModel>();
 
-            //_dataMusics = listServise.GetListMusic();
+            _dataMusics = listServise.GetListMusic();
         }
 
         private DataMusic _item;
@@ -72,6 +72,42 @@ namespace Mp3.Core.ViewModels
         {
            
             get { return new MvxCommand(() => MyResolve(Item)); }
+        }
+
+        public ICommand DoPrevCommand
+        {
+            get
+            {
+                return new MvxCommand(() =>
+                {
+                    DataMusic prevItem = new DataMusic();
+                    if (Item.Id > 0)
+                    {
+                        prevItem = DataMusics[Item.Id - 1];
+                        Item = prevItem;
+                    }
+                    MyResolve(Item);
+                }
+                    );
+            }
+        }
+        public ICommand DoNextCommand
+        {
+
+            get
+            {
+
+                return new MvxCommand(() =>
+                {
+                    DataMusic nextItem = new DataMusic();
+                    if (Item.Id < DataMusics.Count)
+                    {
+                        nextItem = DataMusics[Item.Id + 1];
+                        Item = nextItem;
+
+                    } MyResolve(Item);
+                });
+            }
         }
     }
 }

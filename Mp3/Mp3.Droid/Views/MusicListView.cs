@@ -42,7 +42,7 @@ namespace Mp3.Droid.Views
         public void PlayTrack(string filePath)
         {
 
-            if (!player.IsPlaying)
+            //if (!player.IsPlaying)
             {
                 if (player == null)
                 {
@@ -56,18 +56,18 @@ namespace Mp3.Droid.Views
                     player.Start();
                 }
             }
-             else
-            {
-                if ((player != null))
-                {
-                    if (player.IsPlaying)
-                    {
-                        player.Stop();
-                    }
-                    //player.Release();
-                    //player = null;
-                }
-            }
+            // else
+            //{
+            //    if ((player != null))
+            //    {
+            //        if (player.IsPlaying)
+            //        {
+            //            player.Stop();
+            //        }
+            //        //player.Release();
+            //        //player = null;
+            //    }
+            //}
         }
     }
 }
