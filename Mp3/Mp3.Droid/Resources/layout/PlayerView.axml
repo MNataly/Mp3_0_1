@@ -14,7 +14,7 @@
         android:layout_centerHorizontal="true" />
     <TextView
         android:text="Song title"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         local:MvxBind="Text Item.Name"
@@ -23,20 +23,41 @@
         android:layout_below="@+id/Image" />
     <TextView
         android:text="Artist"
-        android:textSize="20dp"
+        android:textSize="10dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         local:MvxBind="Text Item.Name"
         android:id="@+id/Artist"
         android:layout_centerInParent="true"
         android:layout_below="@+id/Name" />
-    <SeekBar
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        local:MvxBind="Progress "
         android:id="@+id/Pos"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/Btns" />
+        android:layout_above="@+id/Btns">
+        <TextView
+            android:text="0:00"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/PlayPos"
+            android:layout_alignParentLeft="true" />
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/PosSeek"
+            android:layout_toRightOf="@+id/PlayPos"
+            android:layout_toLeftOf="@+id/timeSong" />
+        <TextView
+            android:text="2:00"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/timeSong"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
@@ -45,13 +66,14 @@
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/Vol">
         <Button
-            android:text="Prev"
+            android:text="&lt;&lt;"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/Prev"
-            android:layout_alignParentLeft="true" />
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="40dp" />
         <Button
-            android:text="Play!"
+            android:text="Play/Pause"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             local:MvxBind="Click DoPlayCommand"
@@ -59,11 +81,12 @@
             android:layout_toRightOf="@+id/Prev"
             android:layout_toLeftOf="@+id/Next" />
         <Button
-            android:text="Next"
+            android:text="&gt;&gt;"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/Next"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40dp" />
     </RelativeLayout>
     <SeekBar
         android:layout_width="fill_parent"

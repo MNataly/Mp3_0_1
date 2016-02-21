@@ -11,7 +11,7 @@ namespace Mp3.Core.ViewModels
     public class MusicListViewModel : MvxViewModel, IMusicListViewModel
     {
         private List<Dictionary<string, string>> _listSongs;
-
+        private int Id;
         public MusicListViewModel()
         {
             DoList();
@@ -92,6 +92,7 @@ namespace Mp3.Core.ViewModels
         {
             Dictionary<string, string> tDictionary = new Dictionary<string, string>();
             DataMusics = new List<DataMusic>(_listSongs.Count);
+            Id = 0;
             foreach (var m in _listSongs)
             {
                 tDictionary = m;
@@ -107,8 +108,9 @@ namespace Mp3.Core.ViewModels
                         Song.FilePath = t.Value;
                     }
                 }
-
+                Song.Id = Id;
                 DataMusics.Add(Song);
+                Id++;
             }
            
         }

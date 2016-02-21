@@ -129,20 +129,29 @@ namespace Mp3.Droid
 			// aapt resource value: 0x7f040003
 			public const int Name = 2130968579;
 			
-			// aapt resource value: 0x7f04000a
-			public const int Next = 2130968586;
+			// aapt resource value: 0x7f04000d
+			public const int Next = 2130968589;
 			
-			// aapt resource value: 0x7f040009
-			public const int Play = 2130968585;
+			// aapt resource value: 0x7f04000c
+			public const int Play = 2130968588;
+			
+			// aapt resource value: 0x7f040007
+			public const int PlayPos = 2130968583;
 			
 			// aapt resource value: 0x7f040005
 			public const int Pos = 2130968581;
 			
 			// aapt resource value: 0x7f040008
-			public const int Prev = 2130968584;
+			public const int PosSeek = 2130968584;
 			
-			// aapt resource value: 0x7f040007
-			public const int Vol = 2130968583;
+			// aapt resource value: 0x7f04000b
+			public const int Prev = 2130968587;
+			
+			// aapt resource value: 0x7f04000a
+			public const int Vol = 2130968586;
+			
+			// aapt resource value: 0x7f040009
+			public const int timeSong = 2130968585;
 			
 			static Id()
 			{
