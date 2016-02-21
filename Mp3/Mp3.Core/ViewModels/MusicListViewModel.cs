@@ -5,6 +5,7 @@ using Mp3.Core.Services;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using MvvmCross.Plugins.Messenger;
+using SQLite.Net;
 
 namespace Mp3.Core.ViewModels
 {
@@ -14,6 +15,7 @@ namespace Mp3.Core.ViewModels
        
         public MusicListViewModel()
         {
+           
             DoList();
         }
 
@@ -29,31 +31,6 @@ namespace Mp3.Core.ViewModels
             }
         }
 
-
-        private string _playMp3 = "Play";
-
-        public string PlayMp3
-        {
-            get { return _playMp3; }
-            set
-            {
-                _playMp3 = value;
-                RaisePropertyChanged(() => PlayMp3);
-            }
-        }
-
-        private string _musicList = "Music List";
-
-        public string MusicList
-        {
-            get { return _musicList; }
-            set
-            {
-                _musicList = value;
-                RaisePropertyChanged(() => MusicList);
-            }
-        }
-
         public ICommand MusicListCommand
         {
             get { return new MvxCommand(() => ShowViewModel<MusicListViewModel>()); }
@@ -61,14 +38,7 @@ namespace Mp3.Core.ViewModels
 
         IPlayMusicService myVar = Mvx.Resolve<IPlayMusicService>();
 
-        //public ICommand PlayCommand
-        //{
-        //    get
-        //    {
-        //        return new MvxCommand(MyResolve);
-        //    }
-        //}
-
+        
         public void MyResolve(DataMusic dataMusic)
         {
             //var muzService = Mvx.Resolve<IPlayMusicService>();
@@ -85,35 +55,10 @@ namespace Mp3.Core.ViewModels
             var listServise = Mvx.Resolve<ISoungsManagerService>();
             
             DataMusics = listServise.getPlayList;
-            //MusucListCreate();
+            
         }
 
-        //private void MusucListCreate()
-        //{
-        //    DataMusic tDictionary = new DataMusic();
-        //    DataMusics = new List<DataMusic>(_listSongs.Count);
-           
-        //    foreach (var m in _listSongs)
-        //    {
-        //        tDictionary = m;
-        //        DataMusic Song = new DataMusic();
-        //        foreach (var t in tDictionary)
-        //        {
-        //            if (t.Key == "songTitle")
-        //            {
-        //                Song.Name = t.Value;
-        //            }
-        //            if (t.Key == "songPath")
-        //            {
-        //                Song.FilePath = t.Value;
-        //            }
-        //        }
-        //        Song.Id = Id;
-        //        DataMusics.Add(Song);
-        //        Id++;
-        //    }
-           
-        //}
+       
 
         
         public List<DataMusic> GetListMusic()
@@ -140,7 +85,7 @@ namespace Mp3.Core.ViewModels
                                 FilePath = item.FilePath
                             });
                         });
-                //return new MvxCommand<DataMusic>(item =>ShowViewModel<PlayerViewModel>(new PlayerViewModel.Nav(){Id = item.Id,Name = item.Name,FilePath = item.FilePath}));
+                
             }
         }
     }

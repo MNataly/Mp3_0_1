@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Android.App;
@@ -22,6 +23,8 @@ namespace Mp3.Droid.Views
 
         private MvxSubscriptionToken _token;
         private List<DataMusic> _listSongs;
+
+        private int IdMusic;
 
         
         //List<Dictionary<string, string>> songsList = new List<Dictionary<string, string>>();
@@ -50,7 +53,7 @@ namespace Mp3.Droid.Views
 
         public void PlayTrack(int _id)
         {
-
+            IdMusic = _id;
             //if (!player.IsPlaying)
             {
                 if (player == null)
@@ -66,9 +69,9 @@ namespace Mp3.Droid.Views
                     player.SetDataSource(_listSongs[_id].FilePath);
                     player.Prepare();
                     player.Start();
-                    
-                    
-                    //player.Completion();
+
+
+                    player.Completion += PlayerOnCompletion;
                 }
             }
             // else
@@ -83,6 +86,17 @@ namespace Mp3.Droid.Views
             //        //player = null;
             //    }
             //}
+        }
+
+        private void PlayerOnCompletion(object sender, EventArgs eventArgs)
+        {
+            IdMusic++;
+            if (IdMusic >= _listSongs.Count)
+            {
+                IdMusic = 0;
+
+            }
+            PlayTrack(IdMusic);
         }
     }
 }
