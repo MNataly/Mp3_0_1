@@ -12,43 +12,61 @@ namespace Mp3.Droid.Views
     public class PlayerView : MvxActivity
     {
         private MediaPlayer player = new MediaPlayer();
+        private bool statusplayer = false;
 
         private MvxSubscriptionToken _token;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.PlayerView);
-            var messenger = Mvx.Resolve<IMvxMessenger>();
-            _token = messenger.Subscribe<MyMessageModel>(Play);
+            //var messenger = Mvx.Resolve<IMvxMessenger>();
+            //_token = messenger.Subscribe<MyMessageModel>(Play);
         }
 
-        private  void Play(MyMessageModel mess)
-        {
-             PlayTrack(mess.FilePath);
-        }
+    //    private  void Play(MyMessageModel mess)
+    //    {
+    //         PlayTrack(mess.FilePath);
+    //    }
 
-        public async  void PlayTrack(string filePath)
-        {
-            //player = new MediaPlayer();
+    //    public async  void PlayTrack(string filePath)
+    //    {
+    //        //player = new MediaPlayer();
 
-            if (player == null)
-            {
-                player = new MediaPlayer();
-            }
-            else
-            {
-                player.Reset();
-            }
+    //        if (!player.IsPlaying )
+    //        {
 
-            // This method works better than setting the file path in SetDataSource. Don't know why.
-            Java.IO.File file = new Java.IO.File(filePath);
-            Java.IO.FileInputStream fis = new Java.IO.FileInputStream(file);
-            await player.SetDataSourceAsync(fis.FD);
 
-            //player.SetDataSource(filePath);
-            player.Prepare();
-            player.Start();
-        }
+    //            if (player == null)
+    //            {
+    //                player = new MediaPlayer();
+    //            }
+    //            else
+    //            {
+    //                player.Reset();
+    //            }
+
+    //            // This method works better than setting the file path in SetDataSource. Don't know why.
+    //            Java.IO.File file = new Java.IO.File(filePath);
+    //            Java.IO.FileInputStream fis = new Java.IO.FileInputStream(file);
+    //            await player.SetDataSourceAsync(fis.FD);
+
+    //            //player.SetDataSource(filePath);
+    //            player.Prepare();
+    //            player.Start();
+    //        }
+    //        else
+    //        {
+    //            if ((player != null))
+    //            {
+    //                if (player.IsPlaying)
+    //                {
+    //                    player.Stop();
+    //                }
+    //                //player.Release();
+    //                //player = null;
+    //            }
+    //        }
+    //    }
     }
 
     

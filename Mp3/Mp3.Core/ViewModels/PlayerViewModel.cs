@@ -13,11 +13,12 @@ namespace Mp3.Core.ViewModels
     {
         
         //private readonly IDataService _dataService;
-        public PlayerViewModel()
-        {
-           
-        }
+        
 
+        public void GetAllMusic()
+        {
+            
+        }
         public class PlayerData
         {
             public int Id { get; set; }
@@ -28,6 +29,10 @@ namespace Mp3.Core.ViewModels
         public void Init(DataMusic dm)
         {
             _item = dm;
+            
+            //var listServise = Mvx.Resolve<IMusicListViewModel>();
+
+            //_dataMusics = listServise.GetListMusic();
         }
 
         private DataMusic _item;
@@ -65,6 +70,7 @@ namespace Mp3.Core.ViewModels
 
         public ICommand DoPlayCommand
         {
+           
             get { return new MvxCommand(() => MyResolve(Item)); }
         }
     }
