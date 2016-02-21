@@ -9,7 +9,8 @@ namespace Mp3.Droid.Service
     {
         // SDCard Path
         public readonly string MEDIA_PATH = "/storage/";
-        private List<Dictionary<string, string>> songsList;
+        private List<DataMusic> songsList;
+        private int Id;
 
         FileExtensionFilter obj = new FileExtensionFilter();
         // Constructor
@@ -20,12 +21,12 @@ namespace Mp3.Droid.Service
      * 
      * */
 
-        public List<Dictionary<string, string>> getPlayList
+        public List<DataMusic> getPlayList
         {
             
             get
             {
-                songsList = new List<Dictionary<string, string>>();
+                songsList = new List<DataMusic>();
                 File home = new File(MEDIA_PATH);
 
                 File[] listFiles = home.ListFiles();
@@ -40,6 +41,7 @@ namespace Mp3.Droid.Service
 
         private void scanDirectory(File directory)
         {
+            Id = 0;
             if (directory != null)
             {
                 File[] listFiles = directory.ListFiles();
@@ -65,10 +67,13 @@ namespace Mp3.Droid.Service
 
         private void AddSong(File file)
         {
-            Dictionary<string, string> song = new Dictionary<string, string>();
-            song["songTitle"] = file.Name;
-            song["songPath"] = file.Path;
+            
+            DataMusic song = new DataMusic();
+            song.Id = Id;
+            song.Name = file.Name;
+            song.FilePath = file.Path;
             songsList.Add(song);
+            Id++;
         }
     }
 }

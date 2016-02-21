@@ -10,8 +10,8 @@ namespace Mp3.Core.ViewModels
 {
     public class MusicListViewModel : MvxViewModel, IMusicListViewModel
     {
-        private List<Dictionary<string, string>> _listSongs;
-        private int Id;
+        private List<DataMusic> _listSongs;
+       
         public MusicListViewModel()
         {
             DoList();
@@ -75,7 +75,7 @@ namespace Mp3.Core.ViewModels
             //string str = muzService.PlayTrack();
 
             var messanger = Mvx.Resolve<IMvxMessenger>();
-            var message = new MyMessageModel(this, dataMusic.FilePath);
+            var message = new MyMessageModel(this, dataMusic.Id);
             messanger.Publish(message);
         }
 
@@ -83,37 +83,37 @@ namespace Mp3.Core.ViewModels
         private void DoList()
         {
             var listServise = Mvx.Resolve<ISoungsManagerService>();
-            _listSongs = new List<Dictionary<string, string>>();
-            _listSongs = listServise.getPlayList;
-            MusucListCreate();
+            
+            DataMusics = listServise.getPlayList;
+            //MusucListCreate();
         }
 
-        private void MusucListCreate()
-        {
-            Dictionary<string, string> tDictionary = new Dictionary<string, string>();
-            DataMusics = new List<DataMusic>(_listSongs.Count);
-            Id = 0;
-            foreach (var m in _listSongs)
-            {
-                tDictionary = m;
-                DataMusic Song = new DataMusic();
-                foreach (var t in tDictionary)
-                {
-                    if (t.Key == "songTitle")
-                    {
-                        Song.Name = t.Value;
-                    }
-                    if (t.Key == "songPath")
-                    {
-                        Song.FilePath = t.Value;
-                    }
-                }
-                Song.Id = Id;
-                DataMusics.Add(Song);
-                Id++;
-            }
+        //private void MusucListCreate()
+        //{
+        //    DataMusic tDictionary = new DataMusic();
+        //    DataMusics = new List<DataMusic>(_listSongs.Count);
            
-        }
+        //    foreach (var m in _listSongs)
+        //    {
+        //        tDictionary = m;
+        //        DataMusic Song = new DataMusic();
+        //        foreach (var t in tDictionary)
+        //        {
+        //            if (t.Key == "songTitle")
+        //            {
+        //                Song.Name = t.Value;
+        //            }
+        //            if (t.Key == "songPath")
+        //            {
+        //                Song.FilePath = t.Value;
+        //            }
+        //        }
+        //        Song.Id = Id;
+        //        DataMusics.Add(Song);
+        //        Id++;
+        //    }
+           
+        //}
 
         
         public List<DataMusic> GetListMusic()

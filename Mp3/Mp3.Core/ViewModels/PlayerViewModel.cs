@@ -64,7 +64,7 @@ namespace Mp3.Core.ViewModels
             //string str = muzService.PlayTrack();
 
             var messanger = Mvx.Resolve<IMvxMessenger>();
-            var message = new MyMessageModel(this, dataMusic.FilePath);
+            var message = new MyMessageModel(this, dataMusic.Id);
             messanger.Publish(message);
         }
 

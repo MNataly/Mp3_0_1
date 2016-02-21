@@ -1,9 +1,8 @@
+using System.Collections.Generic;
 using Android.App;
 using Android.Media;
 using Android.OS;
-using Mp3.Core.Models.Messanger;
 using MvvmCross.Droid.Views;
-using MvvmCross.Platform;
 using MvvmCross.Plugins.Messenger;
 
 namespace Mp3.Droid.Views
@@ -13,6 +12,7 @@ namespace Mp3.Droid.Views
     {
         private MediaPlayer player = new MediaPlayer();
         private bool statusplayer = false;
+        
 
         private MvxSubscriptionToken _token;
         protected override void OnCreate(Bundle bundle)

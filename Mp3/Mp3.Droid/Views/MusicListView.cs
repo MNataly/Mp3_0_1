@@ -1,9 +1,13 @@
+using System.Collections.Generic;
+using System.Linq;
 using Android.App;
 using Android.Media;
 using Android.OS;
 using Mp3.Core.Models.Messanger;
+using Mp3.Core.Services;
 using MvvmCross.Droid.Views;
 using MvvmCross.Platform;
+using MvvmCross.Platform.Core;
 using MvvmCross.Plugins.Messenger;
 
 
@@ -17,8 +21,9 @@ namespace Mp3.Droid.Views
         //private string filePath = "/storage/emulated/0/Music/Lindsey Stirling - Shadows.mp3";
 
         private MvxSubscriptionToken _token;
+        private List<DataMusic> _listSongs;
 
-
+        
         //List<Dictionary<string, string>> songsList = new List<Dictionary<string, string>>();
 
         protected override void OnCreate(Bundle bundle)
@@ -27,9 +32,13 @@ namespace Mp3.Droid.Views
 
             SetContentView(Resource.Layout.MusicListView);
 
+            var listServise = Mvx.Resolve<ISoungsManagerService>();
+            _listSongs = new List<DataMusic>();
+            _listSongs = listServise.getPlayList;
+
             var messenger = Mvx.Resolve<IMvxMessenger>();
             _token = messenger.Subscribe<MyMessageModel>(Play);
-
+           
             //DroidSongsManagerService plm = new DroidSongsManagerService();
             //songsList = plm.getPlayList;
         }
@@ -39,7 +48,7 @@ namespace Mp3.Droid.Views
             PlayTrack(mess.FilePath);
         }
 
-        public void PlayTrack(string filePath)
+        public void PlayTrack(int _id)
         {
 
             //if (!player.IsPlaying)
@@ -50,10 +59,16 @@ namespace Mp3.Droid.Views
                 }
                 else
                 {
+                    
+                    
+
                     player.Reset();
-                    player.SetDataSource(filePath);
+                    player.SetDataSource(_listSongs[_id].FilePath);
                     player.Prepare();
                     player.Start();
+                    
+                    
+                    //player.Completion();
                 }
             }
             // else

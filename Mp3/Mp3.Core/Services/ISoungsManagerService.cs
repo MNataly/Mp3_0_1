@@ -8,6 +8,6 @@ namespace Mp3.Core.Services
 {
     public interface ISoungsManagerService
     {
-        List<Dictionary<string, string>> getPlayList { get; }
+        List<DataMusic> getPlayList { get; }
     }
 }
