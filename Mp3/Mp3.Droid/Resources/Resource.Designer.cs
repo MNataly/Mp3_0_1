@@ -47,31 +47,6 @@ namespace Mp3.Droid
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView = global::Mp3.Droid.Resource.Styleable.MvxListView;
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::Mp3.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
 			global::MvvmCross.Binding.Droid.Resource.Styleable.MvxListView_MvxItemTemplate = global::Mp3.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Attribute.MvxBind = global::Mp3.Droid.Resource.Attribute.MvxBind;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Attribute.MvxDropDownItemTemplate = global::Mp3.Droid.Resource.Attribute.MvxDropDownItemTemplate;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Attribute.MvxGroupItemTemplate = global::Mp3.Droid.Resource.Attribute.MvxGroupItemTemplate;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Attribute.MvxItemTemplate = global::Mp3.Droid.Resource.Attribute.MvxItemTemplate;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Attribute.MvxLang = global::Mp3.Droid.Resource.Attribute.MvxLang;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Attribute.MvxSource = global::Mp3.Droid.Resource.Attribute.MvxSource;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Attribute.MvxTemplate = global::Mp3.Droid.Resource.Attribute.MvxTemplate;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Id.MvvmCrossTagId = global::Mp3.Droid.Resource.Id.MvvmCrossTagId;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Id.MvxBindingTagUnique = global::Mp3.Droid.Resource.Id.MvxBindingTagUnique;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.String.ApplicationName = global::Mp3.Droid.Resource.String.ApplicationName;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.String.Hello = global::Mp3.Droid.Resource.String.Hello;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Styleable.MvxBinding = global::Mp3.Droid.Resource.Styleable.MvxBinding;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Styleable.MvxBinding_MvxBind = global::Mp3.Droid.Resource.Styleable.MvxBinding_MvxBind;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Styleable.MvxBinding_MvxLang = global::Mp3.Droid.Resource.Styleable.MvxBinding_MvxLang;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Styleable.MvxControl = global::Mp3.Droid.Resource.Styleable.MvxControl;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Styleable.MvxControl_MvxTemplate = global::Mp3.Droid.Resource.Styleable.MvxControl_MvxTemplate;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Styleable.MvxExpandableListView = global::Mp3.Droid.Resource.Styleable.MvxExpandableListView;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Styleable.MvxExpandableListView_MvxGroupItemTemplate = global::Mp3.Droid.Resource.Styleable.MvxExpandableListView_MvxGroupItemTemplate;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Styleable.MvxImageView = global::Mp3.Droid.Resource.Styleable.MvxImageView;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Styleable.MvxImageView_MvxSource = global::Mp3.Droid.Resource.Styleable.MvxImageView_MvxSource;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Styleable.MvxListView = global::Mp3.Droid.Resource.Styleable.MvxListView;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::Mp3.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
-			global::MvvmCross.Plugins.Sqlite.Droid.Resource.Styleable.MvxListView_MvxItemTemplate = global::Mp3.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
-			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::Mp3.Droid.Resource.String.ApplicationName;
-			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::Mp3.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -136,38 +111,38 @@ namespace Mp3.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050004
-			public const int Artist = 2131034116;
+			// aapt resource value: 0x7f040004
+			public const int Artist = 2130968580;
 			
-			// aapt resource value: 0x7f050006
-			public const int Btns = 2131034118;
+			// aapt resource value: 0x7f040006
+			public const int Btns = 2130968582;
 			
-			// aapt resource value: 0x7f050002
-			public const int Image = 2131034114;
+			// aapt resource value: 0x7f040002
+			public const int Image = 2130968578;
 			
-			// aapt resource value: 0x7f050000
-			public const int MvvmCrossTagId = 2131034112;
+			// aapt resource value: 0x7f040000
+			public const int MvvmCrossTagId = 2130968576;
 			
-			// aapt resource value: 0x7f050001
-			public const int MvxBindingTagUnique = 2131034113;
+			// aapt resource value: 0x7f040001
+			public const int MvxBindingTagUnique = 2130968577;
 			
-			// aapt resource value: 0x7f050003
-			public const int Name = 2131034115;
+			// aapt resource value: 0x7f040003
+			public const int Name = 2130968579;
 			
-			// aapt resource value: 0x7f05000a
-			public const int Next = 2131034122;
+			// aapt resource value: 0x7f04000a
+			public const int Next = 2130968586;
 			
-			// aapt resource value: 0x7f050009
-			public const int Play = 2131034121;
+			// aapt resource value: 0x7f040009
+			public const int Play = 2130968585;
 			
-			// aapt resource value: 0x7f050005
-			public const int Pos = 2131034117;
+			// aapt resource value: 0x7f040005
+			public const int Pos = 2130968581;
 			
-			// aapt resource value: 0x7f050008
-			public const int Prev = 2131034120;
+			// aapt resource value: 0x7f040008
+			public const int Prev = 2130968584;
 			
-			// aapt resource value: 0x7f050007
-			public const int Vol = 2131034119;
+			// aapt resource value: 0x7f040007
+			public const int Vol = 2130968583;
 			
 			static Id()
 			{
@@ -207,11 +182,11 @@ namespace Mp3.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int ApplicationName = 2130968577;
+			// aapt resource value: 0x7f060001
+			public const int ApplicationName = 2131099649;
 			
-			// aapt resource value: 0x7f040000
-			public const int Hello = 2130968576;
+			// aapt resource value: 0x7f060000
+			public const int Hello = 2131099648;
 			
 			static String()
 			{
@@ -226,11 +201,11 @@ namespace Mp3.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f060001
-			public const int Mono_Android_Theme_Splash = 2131099649;
+			// aapt resource value: 0x7f050001
+			public const int Mono_Android_Theme_Splash = 2131034113;
 			
-			// aapt resource value: 0x7f060000
-			public const int Theme_Splash = 2131099648;
+			// aapt resource value: 0x7f050000
+			public const int Theme_Splash = 2131034112;
 			
 			static Style()
 			{

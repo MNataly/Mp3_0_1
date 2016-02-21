@@ -1,6 +1,6 @@
-using MvvmCross.Platform.Plugins;
+﻿using MvvmCross.Platform.Plugins;
 
-namespace Mp3.Droid.Bootstrap
+namespace $rootnamespace$.Bootstrap
 {
     public class SqlitePluginBootstrap
         : MvxPluginBootstrapAction<MvvmCross.Plugins.Sqlite.PluginLoader>
