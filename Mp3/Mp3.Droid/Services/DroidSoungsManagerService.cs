@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Java.IO;
 using Mp3.Core.Services;
+using Mp3.Core.ViewModels;
+using MvvmCross.Platform;
 
 
 namespace Mp3.Droid.Service
@@ -70,9 +72,14 @@ namespace Mp3.Droid.Service
             
             DataMusic song = new DataMusic();
             song.Id = Id;
-            song.Name = file.Name;
+            
             song.FilePath = file.Path;
             songsList.Add(song);
+            var _getDuration = Mvx.Resolve<IGetMediaInfo>();
+            song.Duration = _getDuration.GetDuration(song.FilePath);
+            song.Artist = _getDuration.GetArtist(song.FilePath);
+
+            song.Name = _getDuration.GetName(song.FilePath);
             Id++;
         }
     }

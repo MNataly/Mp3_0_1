@@ -17,7 +17,7 @@ using MvvmCross.Plugins.Messenger;
 namespace Mp3.Droid.Views
 {
     [Activity(Label = "New Music List")]
-    public class MusicListView : MvxActivity , IDurationService
+    public class MusicListView : MvxActivity 
     {
         //Button startPlayback = null;
         private MediaPlayer player = new MediaPlayer();
@@ -106,20 +106,7 @@ namespace Mp3.Droid.Views
             //}
         }
 
-        public string GetDuration(string FilePath)
-        {
-            MediaMetadataRetriever metaRetriever = new MediaMetadataRetriever();
-            metaRetriever.SetDataSource(FilePath);
-
-            string outstr = "";
-
-            string duration = metaRetriever.ExtractMetadata(MetadataKey.Duration);
-
-            int seconds = ((Convert.ToInt32(duration) % 60000) / 1000);
-            int minutes = (Convert.ToInt32(duration) / 60000);
-            outstr = minutes + ":" + seconds;
-            return outstr;
-        }
+        
 
 
         private void PlayerOnCompletion(object sender, EventArgs eventArgs)

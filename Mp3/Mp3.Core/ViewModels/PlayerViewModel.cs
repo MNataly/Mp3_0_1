@@ -17,16 +17,16 @@ namespace Mp3.Core.ViewModels
 
         private bool IsPlayMusic = false;
         private bool NewPlaySong = true;
-        public string _duration;
-        public string Duration
-        {
-            get { return _duration; }
-            set
-            {
-                _duration = value;
-                RaisePropertyChanged(() => Duration);
-            }
-        }
+        //public string _duration;
+        //public string Duration
+        //{
+        //    get { return _duration; }
+        //    set
+        //    {
+        //        _duration = value;
+        //        RaisePropertyChanged(() => Duration);
+        //    }
+        //}
 
         public void Init(DataMusic dm)
         {
@@ -35,8 +35,8 @@ namespace Mp3.Core.ViewModels
             var listServise = Mvx.Resolve<IMusicListViewModel>();
 
             _dataMusics = listServise.GetListMusic();
-            var _getDuration = Mvx.Resolve<IDurationService>();
-            Duration = _getDuration.GetDuration(_item.FilePath);
+            var _getDuration = Mvx.Resolve<IGetMediaInfo>();
+            _item.Duration = _getDuration.GetDuration(_item.FilePath);
 
         }
 

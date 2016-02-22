@@ -84,7 +84,9 @@ namespace Mp3.Core.ViewModels
                             {
                                 Id = item.Id,
                                 FilePath = item.FilePath,
-                                Name = item.Name
+                                Name = item.Name,
+                                Duration = item.Duration,
+                                Artist = item.Artist
                             });
                         });
                 //new MvxCommand<DataMusic>(
