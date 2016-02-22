@@ -6,7 +6,7 @@ namespace Mp3.Core.Services
     public interface IDataService 
     {
         List<DataMusic> GetMusics();
-       
+        void Insert(DataMusic dataMusic);
         
     }
 }

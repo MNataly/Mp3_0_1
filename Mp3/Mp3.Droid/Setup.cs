@@ -1,6 +1,8 @@
 using Android.Content;
 using Mp3.Core.Services;
+using Mp3.Core.ViewModels;
 using Mp3.Droid.Service;
+using Mp3.Droid.Views;
 using MvvmCross.Droid.Platform;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
@@ -19,6 +21,7 @@ namespace Mp3.Droid
             base.InitializeIoC();
             Mvx.RegisterType<IPlayMusicService>(()=> new DroidPlayMusicService());
             Mvx.RegisterType<ISoungsManagerService>(()=> new DroidSongsManagerService());
+            Mvx.RegisterType<IDurationService>(()=> new MusicListView());
         }
 
         //protected override void InitializeIoC()

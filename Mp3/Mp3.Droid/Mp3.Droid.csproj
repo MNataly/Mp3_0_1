@@ -90,6 +90,7 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Views\MusicListView.cs" />
     <Compile Include="Views\PlayerView.cs" />
+    <Compile Include="Views\TestView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
@@ -100,6 +101,9 @@
     <AndroidResource Include="Resources\layout\MusicListView.axml" />
     <AndroidResource Include="Resources\layout\PlayerView.axml" />
     <AndroidResource Include="Resources\layout\SplashScreen.axml" />
+    <AndroidResource Include="Resources\layout\TestView.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />

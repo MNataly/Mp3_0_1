@@ -12,10 +12,12 @@ namespace Mp3.Core.ViewModels
     public class MusicListViewModel : MvxViewModel, IMusicListViewModel
     {
         private List<DataMusic> _listSongs;
-       
+        
+
+        
         public MusicListViewModel()
         {
-           
+            
             DoList();
         }
 
@@ -36,7 +38,7 @@ namespace Mp3.Core.ViewModels
             get { return new MvxCommand(() => ShowViewModel<MusicListViewModel>()); }
         }
 
-        IPlayMusicService myVar = Mvx.Resolve<IPlayMusicService>();
+        //IPlayMusicService myVar = Mvx.Resolve<IPlayMusicService>();
 
         
         public void MyResolve(DataMusic dataMusic)
@@ -44,9 +46,9 @@ namespace Mp3.Core.ViewModels
             //var muzService = Mvx.Resolve<IPlayMusicService>();
             //string str = muzService.PlayTrack();
 
-            var messanger = Mvx.Resolve<IMvxMessenger>();
-            var message = new MyMessageModel(this, dataMusic.Id);
-            messanger.Publish(message);
+            //var messanger = Mvx.Resolve<IMvxMessenger>();
+            //var message = new MyMessageModel(this, dataMusic.Id );
+            //messanger.Publish(message);
         }
 
 
@@ -78,14 +80,23 @@ namespace Mp3.Core.ViewModels
                     new MvxCommand<DataMusic>(
                         (item) =>
                         {
-                            ShowViewModel<PlayerViewModel>(new PlayerViewModel.PlayerData()
+                            ShowViewModel<PlayerViewModel>(new DataMusic()
                             {
                                 Id = item.Id,
-                                Name = item.Name,
-                                FilePath = item.FilePath
+                                FilePath = item.FilePath,
+                                Name = item.Name
                             });
                         });
-                
+                //new MvxCommand<DataMusic>(
+                //        (item) =>
+                //        {
+                //            ShowViewModel<PlayerViewModel>(new PlayerViewModel.PlayerData()
+                //            {
+                //                Id = item.Id,
+                //                Name = item.Name,
+                //                FilePath = item.FilePath
+                //            });
+                //        });
             }
         }
     }

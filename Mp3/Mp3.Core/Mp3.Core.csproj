@@ -42,9 +42,11 @@
     <Compile Include="Services\IDataService.cs" />
     <Compile Include="Services\IPlayMusicService.cs" />
     <Compile Include="Services\ISoungsManagerService.cs" />
+    <Compile Include="ViewModels\IDurationService.cs" />
     <Compile Include="ViewModels\IMusicListViewModel.cs" />
     <Compile Include="ViewModels\MusicListViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
+    <Compile Include="ViewModels\TestViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
