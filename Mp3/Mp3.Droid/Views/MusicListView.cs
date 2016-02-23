@@ -5,6 +5,7 @@ using Android.App;
 using Android.Media;
 using Android.OS;
 using Android.Util;
+using Android.Widget;
 using Mp3.Core.Models.Messanger;
 using Mp3.Core.Services;
 using Mp3.Core.ViewModels;
@@ -19,38 +20,41 @@ namespace Mp3.Droid.Views
     [Activity(Label = "New Music List")]
     public class MusicListView : MvxActivity 
     {
-        //Button startPlayback = null;
+        
         private MediaPlayer player = new MediaPlayer();
-        //private string filePath = "/storage/emulated/0/Music/Lindsey Stirling - Shadows.mp3";
-
+        
         private MvxSubscriptionToken _token;
         private List<DataMusic> _listSongs;
 
         private int IdMusic;
         private int stopPlayer = 0;
         private int Duration;
+        private TextView CurentPosSong;
+        private readonly IDataService _dataService;
         
-        //List<Dictionary<string, string>> songsList = new List<Dictionary<string, string>>();
-
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.MusicListView);
 
-            var listServise = Mvx.Resolve<ISoungsManagerService>();
+            //var listServise = Mvx.Resolve<ISoungsManagerService>();
+
             _listSongs = new List<DataMusic>();
-            _listSongs = listServise.getPlayList;
+
+           
 
             var messenger = Mvx.Resolve<IMvxMessenger>();
             _token = messenger.Subscribe<MyMessageModel>(Play);
-           
+            CurentPosSong = FindViewById<TextView>(Resource.Id.PlayPos);
+
             //DroidSongsManagerService plm = new DroidSongsManagerService();
             //songsList = plm.getPlayList;
         }
 
         private void Play(MyMessageModel mess)
         {
+            _listSongs = mess.DataMusics;
             if (mess.NewPlaySong == true) stopPlayer = 0;
             if (!mess.IsPlayMusic)
             {
@@ -60,12 +64,17 @@ namespace Mp3.Droid.Views
             {
                 Pause();
             }
+
             
         }
 
         public void PlayTrack(int _id)
         {
             IdMusic = _id;
+            DataMusic dataMusic = _listSongs.Find(delegate(DataMusic bk)
+            {
+                return bk.Id == _id;
+            });
             //if (!player.IsPlaying)
             {
                 if (player == null)
@@ -82,14 +91,14 @@ namespace Mp3.Droid.Views
                     if (stopPlayer == 0)
                     {
                         player.Reset();
-                        player.SetDataSource(_listSongs[_id].FilePath);
+                        player.SetDataSource(dataMusic.FilePath);
                         player.Prepare();
                     }
                     
                     player.Start();
+                    //CurentPosSong.Text = player.CurrentPosition.ToString();
 
-
-                    player.Completion += PlayerOnCompletion;
+                    //player.Completion += PlayerOnCompletion;
                 }
             }
             // else

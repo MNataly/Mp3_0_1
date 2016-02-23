@@ -8,6 +8,6 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        local:MvxBind="ItemsSource DataMusics; ItemClick TapItemMusicCommand"
+        local:MvxBind="ItemsSource ListSongs; ItemClick TapItemMusicCommand"
         local:MvxItemTemplate="@layout/list_music" />
 </LinearLayout>

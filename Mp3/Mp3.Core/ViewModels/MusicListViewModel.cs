@@ -9,18 +9,36 @@ using SQLite.Net;
 
 namespace Mp3.Core.ViewModels
 {
-    public class MusicListViewModel : MvxViewModel, IMusicListViewModel
+    public class MusicListViewModel : MvxViewModel 
     {
         private List<DataMusic> _listSongs;
-        
+        public List<DataMusic> ListSongs {
+            get { return _listSongs; }
+            set { _listSongs = value;RaisePropertyChanged(()=>ListSongs); }
+        }
+        private readonly IDataService _dataService;
 
-        
-        public MusicListViewModel()
+
+        public MusicListViewModel(IDataService dataService)
         {
-            
-            DoList();
+            _dataService = dataService;
+           
+            //DoList();
+            //DelAll();
+            ListSongs = _dataService.GetMusics();
+            if (ListSongs.Count == 0)
+            {
+                DoList();
+                ListSongs = _dataService.GetMusics();
+            }
+
+
         }
 
+        private void DelAll()
+        {
+            _dataService.DeleteAll();
+        }
         private List<DataMusic> _dataMusics;
 
         public List<DataMusic> DataMusics
@@ -38,42 +56,20 @@ namespace Mp3.Core.ViewModels
             get { return new MvxCommand(() => ShowViewModel<MusicListViewModel>()); }
         }
 
-        //IPlayMusicService myVar = Mvx.Resolve<IPlayMusicService>();
-
-        
-        public void MyResolve(DataMusic dataMusic)
-        {
-            //var muzService = Mvx.Resolve<IPlayMusicService>();
-            //string str = muzService.PlayTrack();
-
-            //var messanger = Mvx.Resolve<IMvxMessenger>();
-            //var message = new MyMessageModel(this, dataMusic.Id );
-            //messanger.Publish(message);
-        }
-
-
         private void DoList()
         {
             var listServise = Mvx.Resolve<ISoungsManagerService>();
-            
+
             DataMusics = listServise.getPlayList;
+            foreach (var t in DataMusics)
+            {
+                int i = _dataService.Insert(t);
+            }
             
-        }
-
-       
-
-        
-        public List<DataMusic> GetListMusic()
-        {
-            return DataMusics;
         }
 
         public ICommand TapItemMusicCommand
         {
-            //get
-            //{
-            //    return new MvxCommand<DataMusic>(item =>MyResolve(item));
-            //}
             get
             {
                 return
@@ -89,16 +85,6 @@ namespace Mp3.Core.ViewModels
                                 Artist = item.Artist
                             });
                         });
-                //new MvxCommand<DataMusic>(
-                //        (item) =>
-                //        {
-                //            ShowViewModel<PlayerViewModel>(new PlayerViewModel.PlayerData()
-                //            {
-                //                Id = item.Id,
-                //                Name = item.Name,
-                //                FilePath = item.FilePath
-                //            });
-                //        });
             }
         }
     }

@@ -10,10 +10,10 @@ namespace Mp3.Droid.Service
     public class DroidSongsManagerService : ISoungsManagerService
     {
         // SDCard Path
-        public readonly string MEDIA_PATH = "/storage/";
+        public readonly string MEDIA_PATH = "/sdcard/";
         private List<DataMusic> songsList;
         private int Id;
-
+        
         FileExtensionFilter obj = new FileExtensionFilter();
         // Constructor
 
@@ -80,6 +80,10 @@ namespace Mp3.Droid.Service
             song.Artist = _getDuration.GetArtist(song.FilePath);
 
             song.Name = _getDuration.GetName(song.FilePath);
+            if (song.Name == null)
+            {
+                song.Name = file.Name;
+            }
             Id++;
         }
     }

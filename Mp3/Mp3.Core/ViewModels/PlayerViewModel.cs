@@ -13,31 +13,21 @@ namespace Mp3.Core.ViewModels
         : MvxViewModel
     {
         
-        //private readonly IDataService _dataService;
+        private IDataService _dataService;
 
         private bool IsPlayMusic = false;
         private bool NewPlaySong = true;
-        //public string _duration;
-        //public string Duration
-        //{
-        //    get { return _duration; }
-        //    set
-        //    {
-        //        _duration = value;
-        //        RaisePropertyChanged(() => Duration);
-        //    }
-        //}
+
+        public PlayerViewModel(IDataService dataService)
+        {
+            _dataService = dataService;
+            _dataMusics = _dataService.GetMusics();
+        }
 
         public void Init(DataMusic dm)
         {
             _item = dm;
             
-            var listServise = Mvx.Resolve<IMusicListViewModel>();
-
-            _dataMusics = listServise.GetListMusic();
-            var _getDuration = Mvx.Resolve<IGetMediaInfo>();
-            _item.Duration = _getDuration.GetDuration(_item.FilePath);
-
         }
 
         private DataMusic _item;
@@ -70,7 +60,7 @@ namespace Mp3.Core.ViewModels
             //string str = muzService.PlayTrack();
 
             var messanger = Mvx.Resolve<IMvxMessenger>();
-            var message = new MyMessageModel(this, dataMusic.Id, IsPlayMusic, NewPlaySong);
+            var message = new MyMessageModel(this, dataMusic.Id, IsPlayMusic, NewPlaySong, _dataMusics);
             messanger.Publish(message);
             
             
@@ -132,13 +122,14 @@ namespace Mp3.Core.ViewModels
 
                 return new MvxCommand(() =>
                 {
-                    DataMusic nextItem = new DataMusic();
+                    int index = DataMusics.IndexOf(Item);
+                    
                     NewPlaySong = true;
                     IsPlayMusic = false;
-                    if (Item.Id < DataMusics.Count)
+                    if (index < DataMusics.Count - 1 && index >= 0)
                     {
-                        nextItem = DataMusics[Item.Id + 1];
-                        Item = nextItem;
+
+                        Item = DataMusics[index + 1];
 
                     } 
                     MyResolve(Item);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MvvmCross.Plugins.Sqlite;
 using SQLite.Net;
 using SQLite.Net.Interop;
@@ -8,46 +9,49 @@ namespace Mp3.Core.Services
 {
     public class DataService : IDataService
     {
-        private readonly  IMvxSqliteConnectionFactory _sqliteConnectionFactory;
+        private readonly SQLiteConnection _sqLiteConnection;
+        
+        public DataService(IMvxSqliteConnectionFactory sqliteConnectionFactory)
+        {
+            var databaseName = "dbMusic.sqlite";
+            _sqLiteConnection = sqliteConnectionFactory.GetConnection(databaseName);
+            _sqLiteConnection.CreateTable<DataMusic>();
+            
+        }
 
         public List<DataMusic> GetMusics()
         {
-            return null;//database.Table<DataMusic>().ToList();
+            return _sqLiteConnection.Table<DataMusic>().ToList();
         }
 
-        public void Insert(DataMusic dataMusic)
+        public int Insert(DataMusic dataMusic)
         {
-            throw new System.NotImplementedException();
+            return _sqLiteConnection.Insert(dataMusic);
         }
 
-
-        public DataService()
+        public int InsertAll(List<DataMusic> dataMusics)
         {
-            //IMvxSqliteConnectionFactory sqliteConnectionFactory;
-            //_sqliteConnectionFactory = sqliteConnectionFactory;
-            //var databaseName = "dbMusic.sqlite";
-            //var connection = _sqliteConnectionFactory.GetConnection(databaseName);
-            //connection.CreateTable<DataMusic>();
-            createConnection();
+            return _sqLiteConnection.UpdateAll(dataMusics);
         }
 
-        private void createConnection()
+        public int Update(DataMusic dataMusic)
         {
-            var databaseName = "dbMusic.sqlite";
-            //TestDb db = new TestDb(new SQLitePlatformTest(),databaseName);
+            return _sqLiteConnection.Update(dataMusic);
         }
 
-
-        
-    }
-
-    public class TestDb : SQLiteConnection
-    {
-        public TestDb(ISQLitePlatform sqlitePlatform, String path)
-            : base(sqlitePlatform, path)
+        public int UpdateAll(List<DataMusic> dataMusics)
         {
-            TraceListener = DebugTraceListener.Instance;
-            CreateTable<DataMusic>();
+            return _sqLiteConnection.UpdateAll(dataMusics);
+        }
+
+        public int Delete(DataMusic dataMusic)
+        {
+            return _sqLiteConnection.Delete<DataMusic>(dataMusic);
+        }
+
+        public int DeleteAll()
+        {
+             return _sqLiteConnection.DeleteAll<DataMusic>();
         }
     }
 }
