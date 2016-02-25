@@ -29,17 +29,7 @@ namespace Mp3.Core.ViewModels
             }
         }
 
-        private PlayList _playList;
-
-        public PlayList PlayList
-        {
-            get { return _playList; }
-            set
-            {
-                _playList = value;
-                RaisePropertyChanged(() => PlayList);
-            }
-        }
+       
 
         public ICommand AddPlayListCommand
         {

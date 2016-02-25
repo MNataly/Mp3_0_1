@@ -72,19 +72,12 @@ namespace Mp3.Core.ViewModels
         {
             get
             {
+                
                 return
-                    new MvxCommand<DataMusic>(
-                        (item) =>
-                        {
-                            ShowViewModel<PlayerViewModel>(new DataMusic()
-                            {
-                                Id = item.Id,
-                                FilePath = item.FilePath,
-                                Name = item.Name,
-                                Duration = item.Duration,
-                                Artist = item.Artist
-                            });
-                        });
+                    new MvxCommand<DataMusic>((item) => { ShowViewModel<PlayerViewModel>(
+                        new { IdDataMusic = item.Id, IdPList = -1 }
+
+                    ); });
             }
         }
     }

@@ -9,31 +9,76 @@ using MvvmCross.Plugins.Messenger;
 
 namespace Mp3.Core.ViewModels
 {
-    public class PlayerViewModel
-        : MvxViewModel
+    public class PlayerViewModel : MvxViewModel
     {
         
         private IDataService _dataService;
+        private IPlayListsService _playListsService;
 
         private bool IsPlayMusic = false;
         private bool NewPlaySong = true;
 
-        public PlayerViewModel(IDataService dataService)
+        public class ParamInit
+        {
+            public DataMusic dm { get; set; }
+            public PlayList playList { get; set; }
+        }
+
+        public PlayerViewModel(IDataService dataService, IPlayListsService playListsService)
         {
             _dataService = dataService;
-            DataMusics = _dataService.GetMusics();
+            _playListsService = playListsService;
+            _listAllSongs = _dataService.GetMusics();
+            _pLists = playListsService.GetPlayLists();
         }
 
-        public void Init(DataMusic dm)
+        public void Init(int IdDataMusic, int IdPList)
         {
-            _item = dm;
-            
+            _item = _listAllSongs.Find(item => item.Id == IdDataMusic);
+            if (IdPList != -1)
+            {
+                _pList = _pLists.Find(item => item.IdPL == IdPList);
+                foreach (var item in PLists)
+                {
+                    string[] idStrings = _pList.ListMusicsId.Split(' ');
+                    _dataMusics = new List<DataMusic>();
+                    foreach (var i in idStrings)
+                    {
+                        if (i != "")
+                        {
+                            int x = Convert.ToInt32(i);
+                            _dataMusics.Add(_listAllSongs.Find(bk => bk.Id == x));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                _dataMusics = _listAllSongs;
+            }
+            MyResolve( _item);
         }
 
+        private PlayList _pList;
+        private List<PlayList> _pLists;
         private DataMusic _item;
         private List<DataMusic> _dataMusics;
-        
+        private List<DataMusic> _listAllSongs;
 
+        public PlayList PList
+        {
+            get { return _pList; }
+            set { _pList = value; RaisePropertyChanged(() => PList); }
+        }
+        public List<PlayList> PLists
+        {
+            get { return _pLists; }
+            set
+            {
+                _pLists = value;
+                RaisePropertyChanged(() => PLists);
+            }
+        }
         public List<DataMusic> DataMusics
         {
             get { return _dataMusics; }
@@ -43,7 +88,6 @@ namespace Mp3.Core.ViewModels
                 RaisePropertyChanged(() => DataMusics);
             }
         }
-
         public DataMusic Item
         {
             get { return _item; }
@@ -53,11 +97,20 @@ namespace Mp3.Core.ViewModels
                 RaisePropertyChanged(() => Item);
             }
         }
+        public List<DataMusic> ListAllSongs
+        {
+            get { return _listAllSongs; }
+            set
+            {
+                _listAllSongs = value;
+                RaisePropertyChanged(() => ListAllSongs);
+            }
+        }
 
+        
         public void MyResolve(DataMusic dataMusic)
         {
-            //var muzService = Mvx.Resolve<IPlayMusicService>();
-            //string str = muzService.PlayTrack();
+  
 
             var messanger = Mvx.Resolve<IMvxMessenger>();
             var message = new MyMessageModel(this, dataMusic.Id, IsPlayMusic, NewPlaySong, _dataMusics);
@@ -65,9 +118,6 @@ namespace Mp3.Core.ViewModels
             
             
         }
-
-        
-
 
         public ICommand DoPlayCommand
         {
@@ -93,7 +143,6 @@ namespace Mp3.Core.ViewModels
                     );
             }
         }
-
         public ICommand DoPrevCommand
         {
             get
@@ -144,11 +193,14 @@ namespace Mp3.Core.ViewModels
 
             
         }
-        public ICommand PlayLists
+
+        public ICommand PlayListsCommand
             
         {
             get { return new MvxCommand(() => ShowViewModel<PLsViewModel>()); }
             
         }
+
+        
     }
 }
