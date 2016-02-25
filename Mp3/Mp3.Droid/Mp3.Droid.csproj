@@ -112,6 +112,7 @@
     <Compile Include="Setup.cs" />
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Views\AddPLView.cs" />
+    <Compile Include="Views\EditPLView.cs" />
     <Compile Include="Views\MusicListView.cs" />
     <Compile Include="Views\PlayerView.cs" />
     <Compile Include="Views\PLsView.cs" />
@@ -142,13 +143,13 @@
     <AndroidResource Include="Resources\layout\PLView.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\EditPLView.axml">
-      <SubType>AndroidResource</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\List_PLView.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\List_EditPLView.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\EditPLView.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

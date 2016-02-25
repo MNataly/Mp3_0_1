@@ -136,11 +136,14 @@ namespace Mp3.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050004
-			public const int AddPlayList = 2131034116;
+			// aapt resource value: 0x7f050013
+			public const int AddPlayList = 2131034131;
 			
 			// aapt resource value: 0x7f050009
 			public const int Artist = 2131034121;
+			
+			// aapt resource value: 0x7f050004
+			public const int BtnSave = 2131034116;
 			
 			// aapt resource value: 0x7f05000b
 			public const int Btns = 2131034123;
@@ -184,8 +187,8 @@ namespace Mp3.Droid
 			// aapt resource value: 0x7f050003
 			public const int button1 = 2131034115;
 			
-			// aapt resource value: 0x7f050013
-			public const int button2 = 2131034131;
+			// aapt resource value: 0x7f050014
+			public const int button2 = 2131034132;
 			
 			// aapt resource value: 0x7f050005
 			public const int checkBox1 = 2131034117;
