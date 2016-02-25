@@ -147,7 +147,7 @@ namespace Mp3.Core.ViewModels
         public ICommand PlayLists
             
         {
-            get { return new MvxCommand(() => ShowViewModel<PlayListsViewModel>()); }
+            get { return new MvxCommand(() => ShowViewModel<PLsViewModel>()); }
             
         }
     }

@@ -136,17 +136,17 @@ namespace Mp3.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050012
-			public const int AddPlayList = 2131034130;
+			// aapt resource value: 0x7f050004
+			public const int AddPlayList = 2131034116;
 			
-			// aapt resource value: 0x7f050008
-			public const int Artist = 2131034120;
+			// aapt resource value: 0x7f050009
+			public const int Artist = 2131034121;
 			
-			// aapt resource value: 0x7f05000a
-			public const int Btns = 2131034122;
+			// aapt resource value: 0x7f05000b
+			public const int Btns = 2131034123;
 			
-			// aapt resource value: 0x7f050006
-			public const int Image = 2131034118;
+			// aapt resource value: 0x7f050007
+			public const int Image = 2131034119;
 			
 			// aapt resource value: 0x7f050000
 			public const int MvvmCrossTagId = 2131034112;
@@ -154,44 +154,47 @@ namespace Mp3.Droid
 			// aapt resource value: 0x7f050001
 			public const int MvxBindingTagUnique = 2131034113;
 			
-			// aapt resource value: 0x7f050007
-			public const int Name = 2131034119;
+			// aapt resource value: 0x7f050008
+			public const int Name = 2131034120;
+			
+			// aapt resource value: 0x7f050012
+			public const int Next = 2131034130;
 			
 			// aapt resource value: 0x7f050011
-			public const int Next = 2131034129;
+			public const int Play = 2131034129;
 			
-			// aapt resource value: 0x7f050010
-			public const int Play = 2131034128;
-			
-			// aapt resource value: 0x7f050005
-			public const int PlayLists = 2131034117;
-			
-			// aapt resource value: 0x7f05000b
-			public const int PlayPos = 2131034123;
-			
-			// aapt resource value: 0x7f050009
-			public const int Pos = 2131034121;
+			// aapt resource value: 0x7f050006
+			public const int PlayLists = 2131034118;
 			
 			// aapt resource value: 0x7f05000c
-			public const int PosSeek = 2131034124;
+			public const int PlayPos = 2131034124;
+			
+			// aapt resource value: 0x7f05000a
+			public const int Pos = 2131034122;
+			
+			// aapt resource value: 0x7f05000d
+			public const int PosSeek = 2131034125;
+			
+			// aapt resource value: 0x7f050010
+			public const int Prev = 2131034128;
 			
 			// aapt resource value: 0x7f05000f
-			public const int Prev = 2131034127;
-			
-			// aapt resource value: 0x7f05000e
-			public const int Vol = 2131034126;
+			public const int Vol = 2131034127;
 			
 			// aapt resource value: 0x7f050003
 			public const int button1 = 2131034115;
 			
-			// aapt resource value: 0x7f050004
-			public const int checkBox1 = 2131034116;
+			// aapt resource value: 0x7f050013
+			public const int button2 = 2131034131;
+			
+			// aapt resource value: 0x7f050005
+			public const int checkBox1 = 2131034117;
 			
 			// aapt resource value: 0x7f050002
 			public const int editText1 = 2131034114;
 			
-			// aapt resource value: 0x7f05000d
-			public const int timeSong = 2131034125;
+			// aapt resource value: 0x7f05000e
+			public const int timeSong = 2131034126;
 			
 			static Id()
 			{
@@ -207,31 +210,43 @@ namespace Mp3.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int AddPlayListView = 2130903040;
+			public const int AddPLView = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int List_ForPlaylist = 2130903041;
+			public const int EditPLView = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int List_Music = 2130903042;
+			public const int List_AddPLView = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int List_PlayLists = 2130903043;
+			public const int List_EditPLView = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int MusicListView = 2130903044;
+			public const int List_MusicListView = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int PlayerView = 2130903045;
+			public const int List_PLsView = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int PlayListsView = 2130903046;
+			public const int List_PLView = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int SplashScreen = 2130903047;
+			public const int MusicListView = 2130903047;
 			
 			// aapt resource value: 0x7f030008
-			public const int TestView = 2130903048;
+			public const int PlayerView = 2130903048;
+			
+			// aapt resource value: 0x7f030009
+			public const int PLsView = 2130903049;
+			
+			// aapt resource value: 0x7f03000a
+			public const int PLView = 2130903050;
+			
+			// aapt resource value: 0x7f03000b
+			public const int SplashScreen = 2130903051;
+			
+			// aapt resource value: 0x7f03000c
+			public const int TestView = 2130903052;
 			
 			static Layout()
 			{

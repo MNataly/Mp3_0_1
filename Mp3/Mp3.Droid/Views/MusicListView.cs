@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Android.App;
+using Android.Content;
 using Android.Media;
 using Android.OS;
 using Android.Util;
@@ -30,11 +31,12 @@ namespace Mp3.Droid.Views
         private int IdMusic;
         private int stopPlayer = 0;
         private int Duration;
-        private TextView CurentPosSong;
+        
         private readonly IDataService _dataService;
 
-        private Handler mHandler = new Handler();
-        private SeekBar seekBarPos;
+        
+        
+        
         private DataMusic _dataMusic;
         
 
@@ -48,39 +50,17 @@ namespace Mp3.Droid.Views
             
             var messenger = Mvx.Resolve<IMvxMessenger>();
             _token = messenger.Subscribe<MyMessageModel>(Play);
-            CurentPosSong = FindViewById<TextView>(Resource.Id.PlayPos);
-            seekBarPos = FindViewById<SeekBar>(Resource.Id.PosSeek);
-            CurentPosSong = FindViewById<TextView>(Resource.Id.timeSong);
+            TextView CurentPosSong = FindViewById<TextView>(Resource.Id.PlayPos);
+            SeekBar seekBarPos = FindViewById<SeekBar>(Resource.Id.PosSeek);
+           
+            //seekBarPos.Max = 100;
+            //seekBarPos.Progress = 10;
+            
 
-            //seekBarPos.ProgressChanged += (object sender, SeekBar.ProgressChangedEventArgs e) =>
-            //{
-            //    if (e.FromUser)
-            //    {
-            //        CurentPosSong.Text = string.Format("The value of the SeekBar is {0}", e.Progress);
-            //    }
-            //};
         }
-        public void OnProgressChanged(SeekBar seekBar, int progress, bool fromUser)
-        {
-            if (fromUser)
-            {
-                CurentPosSong.Text = string.Format("The you adjusted the value of the SeekBar to {0}", seekBar.Progress);
-            }
-        }
+        
 
-        public void OnStartTrackingTouch(SeekBar seekBar)
-        {
-            // see http://developer.android.com/reference/android/widget/SeekBar.OnSeekBarChangeListener.html#onStartTrackingTouch(android.widget.SeekBar)
-            // for details about this method.
-            System.Diagnostics.Debug.WriteLine("Tracking changes.");
-        }
-
-        public void OnStopTrackingTouch(SeekBar seekBar)
-        {
-            // see http://developer.android.com/reference/android/widget/SeekBar.OnSeekBarChangeListener.html#onStopTrackingTouch(android.widget.SeekBar)
-            // for details about this method
-            System.Diagnostics.Debug.WriteLine("Stopped tracking changes.");
-        }
+        
         private void Play(MyMessageModel mess)
         {
             _listSongs = mess.DataMusics;

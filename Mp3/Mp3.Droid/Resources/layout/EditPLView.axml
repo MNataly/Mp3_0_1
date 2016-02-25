@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:text="Add New PlayList"
+        android:text="Save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         local:MvxBind="Click AddPlayListCommand"
@@ -14,6 +14,6 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        local:MvxBind="ItemsSource PlayLists"
-        local:MvxItemTemplate="@layout/list_playlists" />
+        local:MvxBind="ItemsSource ListMusic"
+        local:MvxItemTemplate="@layout/list_editplview" />
 </LinearLayout>

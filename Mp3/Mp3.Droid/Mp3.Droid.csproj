@@ -102,7 +102,7 @@
     <Compile Include="Bootstrap\SqlitePluginBootstrap.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
-    <AndroidResource Include="Resources\layout\PlayListsView.axml" />
+    <AndroidResource Include="Resources\layout\PLsView.axml" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DroidGetMediInfo.cs" />
@@ -111,10 +111,11 @@
     <Compile Include="Services\FileExtensionFilter.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="SplashScreen.cs" />
-    <Compile Include="Views\AddPlayListView.cs" />
+    <Compile Include="Views\AddPLView.cs" />
     <Compile Include="Views\MusicListView.cs" />
     <Compile Include="Views\PlayerView.cs" />
-    <Compile Include="Views\PlayListsView.cs" />
+    <Compile Include="Views\PLsView.cs" />
+    <Compile Include="Views\PLView.cs" />
     <Compile Include="Views\TestView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -122,20 +123,32 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\layout\List_Music.axml" />
+    <AndroidResource Include="Resources\layout\List_MusicListView.axml" />
     <AndroidResource Include="Resources\layout\MusicListView.axml" />
     <AndroidResource Include="Resources\layout\PlayerView.axml" />
     <AndroidResource Include="Resources\layout\SplashScreen.axml" />
     <AndroidResource Include="Resources\layout\TestView.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\List_PlayLists.axml">
+    <AndroidResource Include="Resources\layout\List_PLsView.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\AddPlayListView.axml">
+    <AndroidResource Include="Resources\layout\AddPLView.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\List_ForPlaylist.axml">
+    <AndroidResource Include="Resources\layout\List_AddPLView.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\PLView.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\EditPLView.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\List_PLView.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\List_EditPLView.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

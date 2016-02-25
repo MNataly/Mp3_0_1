@@ -11,5 +11,7 @@ namespace Mp3.Core.Services
         public string FilePath { get; set; }
         public string Duration { get; set; }
         public string Artist { get; set; }
+
+        public bool IsChecked { get; set; }
     }
 }
