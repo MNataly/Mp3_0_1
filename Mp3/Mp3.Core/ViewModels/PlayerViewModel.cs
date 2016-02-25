@@ -21,7 +21,7 @@ namespace Mp3.Core.ViewModels
         public PlayerViewModel(IDataService dataService)
         {
             _dataService = dataService;
-            _dataMusics = _dataService.GetMusics();
+            DataMusics = _dataService.GetMusics();
         }
 
         public void Init(DataMusic dm)
@@ -100,13 +100,16 @@ namespace Mp3.Core.ViewModels
             {
                 return new MvxCommand(() =>
                 {
-                    DataMusic prevItem = new DataMusic();
+                    int index = _dataMusics.FindIndex(bk => bk.Id == Item.Id);
+
+
                     NewPlaySong = true;
                     IsPlayMusic = false;
-                    if (Item.Id > 0)
+                    if (index < DataMusics.Count  && index > 0)
                     {
-                        prevItem = DataMusics[Item.Id - 1];
-                        Item = prevItem;
+
+                        Item = DataMusics[index - 1];
+
                     }
                     MyResolve(Item);
                     IsPlayMusic = true;
@@ -122,11 +125,13 @@ namespace Mp3.Core.ViewModels
 
                 return new MvxCommand(() =>
                 {
-                    int index = DataMusics.IndexOf(Item);
+                    
+                    int index = _dataMusics.FindIndex(bk => bk.Id == Item.Id);
+                    
                     
                     NewPlaySong = true;
                     IsPlayMusic = false;
-                    if (index < DataMusics.Count - 1 && index >= 0)
+                    if (index < DataMusics.Count - 1 && index >=0 )
                     {
 
                         Item = DataMusics[index + 1];
@@ -136,6 +141,14 @@ namespace Mp3.Core.ViewModels
                     IsPlayMusic = true;
                 });
             }
+
+            
+        }
+        public ICommand PlayLists
+            
+        {
+            get { return new MvxCommand(() => ShowViewModel<PlayListsViewModel>()); }
+            
         }
     }
 }

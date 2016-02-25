@@ -10,7 +10,7 @@ namespace Mp3.Droid.Service
     public class DroidSongsManagerService : ISoungsManagerService
     {
         // SDCard Path
-        public readonly string MEDIA_PATH = "/sdcard/";
+        public readonly string MEDIA_PATH = "/storage/";
         private List<DataMusic> songsList;
         private int Id;
         

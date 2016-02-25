@@ -40,11 +40,16 @@
     <Compile Include="Services\DataMusic.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\IDataService.cs" />
+    <Compile Include="Services\IPlayListsService.cs" />
     <Compile Include="Services\IPlayMusicService.cs" />
     <Compile Include="Services\ISoungsManagerService.cs" />
+    <Compile Include="Services\PlayList.cs" />
+    <Compile Include="Services\PlayListService.cs" />
+    <Compile Include="ViewModels\AddPlayListViewModel.cs" />
     <Compile Include="ViewModels\IGetMediaInfo.cs" />
     <Compile Include="ViewModels\MusicListViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
+    <Compile Include="ViewModels\PlayListsViewModel.cs" />
     <Compile Include="ViewModels\TestViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

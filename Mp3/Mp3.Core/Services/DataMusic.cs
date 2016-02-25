@@ -1,4 +1,5 @@
-﻿using SQLite.Net.Attributes;
+﻿using System.Collections.Generic;
+using SQLite.Net.Attributes;
 
 namespace Mp3.Core.Services
 {
