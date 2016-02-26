@@ -10,9 +10,10 @@
         android:layout_height="fill_parent">
         <TextView
             android:text="Name"
-            android:textSize="15dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            local:MvxBind="Text Name" />
+            local:MvxBind="Text Name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
     </LinearLayout>
 </LinearLayout>

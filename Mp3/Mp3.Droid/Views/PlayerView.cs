@@ -1,72 +1,74 @@
 using System.Collections.Generic;
 using Android.App;
+using Android.Graphics;
 using Android.Media;
 using Android.OS;
+using Android.Widget;
+using Mp3.Core.Models.Messanger;
+using Mp3.Core.Services;
 using MvvmCross.Droid.Views;
+using MvvmCross.Platform;
 using MvvmCross.Plugins.Messenger;
 
 namespace Mp3.Droid.Views
 {
-    [Activity(Label = "View for PlayerViewModel")]
+    [Activity(Label = "")]
     public class PlayerView : MvxActivity
     {
-        private MediaPlayer player = new MediaPlayer();
-        private bool statusplayer = false;
         
+        //private bool statusplayer = false;
+        private List<DataMusic> _listSongs;
+       
+        private ImageView ImageSong;
 
         private MvxSubscriptionToken _token;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.PlayerView);
-            //var messenger = Mvx.Resolve<IMvxMessenger>();
-            //_token = messenger.Subscribe<MyMessageModel>(Play);
+             _listSongs = new List<DataMusic>();
+            
+            var messenger = Mvx.Resolve<IMvxMessenger>();
+            _token = messenger.Subscribe<MyMessageModel>(Play);
+            
+
+            ImageSong = FindViewById<ImageView>(Resource.Id.Image);
+
+            
+
+        }
+        
+
+        
+        private void Play(MyMessageModel mess)
+        {
+
+            _listSongs = mess.DataMusics;
+                MediaMetadataRetriever metaRetriever = new MediaMetadataRetriever();
+                metaRetriever.SetDataSource(_listSongs.Find(bk => bk.Id == mess.FilePath).FilePath);
+                byte[] data = metaRetriever.GetEmbeddedPicture();
+
+                if (data != null)
+                {
+
+                    Bitmap bitmap = BitmapFactory.DecodeByteArray(data, 0, data.Length);
+
+
+                    ImageSong.SetImageBitmap(bitmap);
+                    ImageSong.SetAdjustViewBounds(true);
+                    ImageSong.LayoutParameters.Width = 550;
+                    ImageSong.LayoutParameters.Height = 550;
+                    
+                }
+                else
+                {
+                    ImageSong.SetImageResource(Resource.Drawable.adele);
+                }
+            
+        
         }
 
-    //    private  void Play(MyMessageModel mess)
-    //    {
-    //         PlayTrack(mess.FilePath);
-    //    }
-
-    //    public async  void PlayTrack(string filePath)
-    //    {
-    //        //player = new MediaPlayer();
-
-    //        if (!player.IsPlaying )
-    //        {
-
-
-    //            if (player == null)
-    //            {
-    //                player = new MediaPlayer();
-    //            }
-    //            else
-    //            {
-    //                player.Reset();
-    //            }
-
-    //            // This method works better than setting the file path in SetDataSource. Don't know why.
-    //            Java.IO.File file = new Java.IO.File(filePath);
-    //            Java.IO.FileInputStream fis = new Java.IO.FileInputStream(file);
-    //            await player.SetDataSourceAsync(fis.FD);
-
-    //            //player.SetDataSource(filePath);
-    //            player.Prepare();
-    //            player.Start();
-    //        }
-    //        else
-    //        {
-    //            if ((player != null))
-    //            {
-    //                if (player.IsPlaying)
-    //                {
-    //                    player.Stop();
-    //                }
-    //                //player.Release();
-    //                //player = null;
-    //            }
-    //        }
-    //    }
+    
     }
 
     

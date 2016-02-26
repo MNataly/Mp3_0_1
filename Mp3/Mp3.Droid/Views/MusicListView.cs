@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.Media;
 using Android.OS;
 using Android.Util;
@@ -19,7 +20,7 @@ using MvvmCross.Plugins.Messenger;
 
 namespace Mp3.Droid.Views
 {
-    [Activity(Label = "New Music List")]
+	[Activity(Label = "Mp3 List")]
     public class MusicListView : MvxActivity 
     {
         
@@ -27,9 +28,11 @@ namespace Mp3.Droid.Views
         
         private MvxSubscriptionToken _token;
         private List<DataMusic> _listSongs;
+        private DataMusic dataMusic = new DataMusic();
+        private ImageView ImageSong;
 
         private int IdMusic;
-        private int stopPlayer = 0;
+        private int stopPlayer ;
         private int Duration;
         
         private readonly IDataService _dataService;
@@ -52,9 +55,9 @@ namespace Mp3.Droid.Views
             _token = messenger.Subscribe<MyMessageModel>(Play);
             TextView CurentPosSong = FindViewById<TextView>(Resource.Id.PlayPos);
             SeekBar seekBarPos = FindViewById<SeekBar>(Resource.Id.PosSeek);
-           
-            //seekBarPos.Max = 100;
-            //seekBarPos.Progress = 10;
+
+            ImageSong = FindViewById<ImageView>(Resource.Id.Image);
+
             
 
         }
@@ -67,7 +70,10 @@ namespace Mp3.Droid.Views
             if (mess.NewPlaySong == true) stopPlayer = 0;
             if (!mess.IsPlayMusic)
             {
+                
                 PlayTrack(mess.FilePath);
+
+                
             }
             else
             {
@@ -78,7 +84,7 @@ namespace Mp3.Droid.Views
         public void PlayTrack(int _id)
         {
             IdMusic = _id;
-            DataMusic dataMusic = _listSongs.Find(bk => bk.Id == _id);
+            dataMusic = _listSongs.Find(bk => bk.Id == _id);
             //if (!player.IsPlaying)
             {
                 if (player == null)

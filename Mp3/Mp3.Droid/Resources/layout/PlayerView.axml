@@ -10,13 +10,11 @@
         android:layout_height="wrap_content"
         local:MvxBind="Click PlayListsCommand"
         android:id="@+id/PlayLists"
-        android:layout_marginLeft="40dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dip"
         android:src="@drawable/adele"
         android:id="@+id/Image"
         android:layout_centerHorizontal="true"
@@ -24,7 +22,7 @@
     <TextView
         android:text="Song title"
         android:textSize="20dp"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         local:MvxBind="Text Item.Name"
         android:id="@+id/Name"
@@ -33,7 +31,7 @@
     <TextView
         android:text="Artist"
         android:textSize="10dp"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         local:MvxBind="Text Item.Artist"
         android:id="@+id/Artist"

@@ -142,6 +142,9 @@ namespace Mp3.Droid
 			// aapt resource value: 0x7f050009
 			public const int Artist = 2131034121;
 			
+			// aapt resource value: 0x7f050014
+			public const int BtnDel = 2131034132;
+			
 			// aapt resource value: 0x7f050004
 			public const int BtnSave = 2131034116;
 			
@@ -186,9 +189,6 @@ namespace Mp3.Droid
 			
 			// aapt resource value: 0x7f050003
 			public const int button1 = 2131034115;
-			
-			// aapt resource value: 0x7f050014
-			public const int button2 = 2131034132;
 			
 			// aapt resource value: 0x7f050005
 			public const int checkBox1 = 2131034117;
@@ -247,9 +247,6 @@ namespace Mp3.Droid
 			
 			// aapt resource value: 0x7f03000b
 			public const int SplashScreen = 2130903051;
-			
-			// aapt resource value: 0x7f03000c
-			public const int TestView = 2130903052;
 			
 			static Layout()
 			{
