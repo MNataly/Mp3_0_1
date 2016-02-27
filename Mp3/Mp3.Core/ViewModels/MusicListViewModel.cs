@@ -25,10 +25,10 @@ namespace Mp3.Core.ViewModels
            
             //DoList();
             //DelAll();
-            //ListSongs = _dataService.GetMusics();
-            //if (ListSongs.Count == 0)
+            ListSongs = _dataService.GetMusics();
+            if (ListSongs.Count == 0)
             {
-                _dataService.DeleteAll();
+                //_dataService.DeleteAll();
                 DoList();
                 ListSongs = _dataService.GetMusics();
             }

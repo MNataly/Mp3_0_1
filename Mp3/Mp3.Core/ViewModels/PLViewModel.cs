@@ -76,6 +76,16 @@ namespace Mp3.Core.ViewModels
             }
         }
 
+        public ICommand DeletePLCommand
+        {
+            get { return new MvxCommand(() => DoDeletePL()); }
+        }
+
+        private void DoDeletePL()
+        {
+            _playListsService.Delete(PList);
+            ShowViewModel<PLsViewModel>();
+        }
         public ICommand TapItemPlayCommand
         {
             get
