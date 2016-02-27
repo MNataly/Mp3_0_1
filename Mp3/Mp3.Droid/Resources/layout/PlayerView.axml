@@ -4,24 +4,16 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <Button
-        android:text="Playlist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        local:MvxBind="Click PlayListsCommand"
-        android:id="@+id/PlayLists"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" />
     <ImageView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/adele"
         android:id="@+id/Image"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/PlayLists" />
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true" />
     <TextView
         android:text="Song title"
-        android:textSize="20dp"
+        android:textSize="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         local:MvxBind="Text Item.Name"
@@ -30,7 +22,7 @@
         android:layout_below="@+id/Image" />
     <TextView
         android:text="Artist"
-        android:textSize="10dp"
+        android:textSize="14dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         local:MvxBind="Text Item.Artist"
@@ -74,29 +66,40 @@
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/Vol">
         <Button
-            android:text="&lt;&lt;"
+            android:text="Favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/FavoriteList"
+            android:layout_alignParentLeft="true" />
+        <ImageButton
+            android:layout_width="60.0dp"
+            android:layout_height="48.5dp"
             local:MvxBind="Click DoPrevCommand"
+            android:layout_toRightOf="@+id/FavoriteList"
             android:id="@+id/Prev"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="40dp" />
-        <Button
-            android:text="Play/Pause"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:src="@drawable/btnprev" />
+        <ImageButton
+            android:layout_width="60.0dp"
+            android:layout_height="48.5dp"
             local:MvxBind="Click DoPlayCommand"
             android:id="@+id/Play"
+            android:src="@drawable/btnplay"
             android:layout_toRightOf="@+id/Prev"
             android:layout_toLeftOf="@+id/Next" />
-        <Button
-            android:text="&gt;&gt;"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:layout_width="60.0dp"
+            android:layout_height="48.5dp"
             local:MvxBind="Click DoNextCommand"
             android:id="@+id/Next"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="40dp" />
+            android:src="@drawable/btnnext"
+            android:layout_toLeftOf="@+id/PlayLists" />
+        <Button
+            android:text="PlayLists"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            local:MvxBind="Click PlayListsCommand"
+            android:id="@+id/PlayLists"
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
     <SeekBar
         android:layout_width="fill_parent"

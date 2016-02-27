@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Android.App;
 using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.Media;
 using Android.OS;
 using Android.Widget;
@@ -20,6 +21,7 @@ namespace Mp3.Droid.Views
         private List<DataMusic> _listSongs;
        
         private ImageView ImageSong;
+        private ImageButton ImageButton;
 
         private MvxSubscriptionToken _token;
         protected override void OnCreate(Bundle bundle)
@@ -33,8 +35,8 @@ namespace Mp3.Droid.Views
             
 
             ImageSong = FindViewById<ImageView>(Resource.Id.Image);
+            ImageButton = FindViewById<ImageButton>(Resource.Id.Play);
 
-            
 
         }
         
@@ -56,16 +58,26 @@ namespace Mp3.Droid.Views
 
                     ImageSong.SetImageBitmap(bitmap);
                     ImageSong.SetAdjustViewBounds(true);
-                    ImageSong.LayoutParameters.Width = 550;
-                    ImageSong.LayoutParameters.Height = 550;
+                    ImageSong.LayoutParameters.Width = 650;
+                    ImageSong.LayoutParameters.Height = 650;
                     
                 }
                 else
                 {
                     ImageSong.SetImageResource(Resource.Drawable.adele);
+                    ImageSong.SetAdjustViewBounds(true);
+                    ImageSong.LayoutParameters.Width = 650;
+                    ImageSong.LayoutParameters.Height = 650;
                 }
-            
-        
+
+            if (mess.IsPlayMusic)
+            {
+                ImageButton.SetImageResource(Resource.Drawable.BtnPlay);
+            }
+            if (!mess.IsPlayMusic)
+            {
+                ImageButton.SetImageResource(Resource.Drawable.BtnPause);
+            }
         }
 
     

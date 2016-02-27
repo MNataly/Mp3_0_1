@@ -56,7 +56,7 @@ namespace Mp3.Droid.Views
             TextView CurentPosSong = FindViewById<TextView>(Resource.Id.PlayPos);
             SeekBar seekBarPos = FindViewById<SeekBar>(Resource.Id.PosSeek);
 
-            ImageSong = FindViewById<ImageView>(Resource.Id.Image);
+            //ImageSong = FindViewById<ImageView>(Resource.Id.Image);
 
             
 
@@ -67,6 +67,9 @@ namespace Mp3.Droid.Views
         private void Play(MyMessageModel mess)
         {
             _listSongs = mess.DataMusics;
+            
+
+
             if (mess.NewPlaySong == true) stopPlayer = 0;
             if (!mess.IsPlayMusic)
             {

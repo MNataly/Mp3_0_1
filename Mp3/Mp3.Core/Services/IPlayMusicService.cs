@@ -2,6 +2,6 @@
 {
     public interface IPlayMusicService 
     {
-        string PlayTrack();
+        void PlayTrack(int _id);
     }
 }

@@ -28,5 +28,9 @@ namespace Mp3.Droid.Service
 
         }
 
+        public void PlayTrack(int _id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

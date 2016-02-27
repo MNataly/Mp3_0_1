@@ -56,7 +56,7 @@ namespace Mp3.Core.ViewModels
             {
                 _dataMusics = _listAllSongs;
             }
-            MyResolve( _item);
+            DoPlay();
         }
 
         private PlayList _pList;
@@ -126,7 +126,17 @@ namespace Mp3.Core.ViewModels
             {
                 return new MvxCommand(() =>
                 {
-                    if (!IsPlayMusic)
+                    DoPlay();
+
+                }
+
+                    );
+            }
+        }
+
+        private void DoPlay()
+        {
+            if (!IsPlayMusic)
                     {
                         MyResolve(Item);
                         IsPlayMusic = true;
@@ -137,11 +147,6 @@ namespace Mp3.Core.ViewModels
                         IsPlayMusic = false;
                         NewPlaySong = false;
                     }
-                    
-                }
-
-                    );
-            }
         }
         public ICommand DoPrevCommand
         {
@@ -154,11 +159,9 @@ namespace Mp3.Core.ViewModels
 
                     NewPlaySong = true;
                     IsPlayMusic = false;
-                    if (index < DataMusics.Count  && index > 0)
+                    if (index < DataMusics.Count && index > 0)
                     {
-
                         Item = DataMusics[index - 1];
-
                     }
                     MyResolve(Item);
                     IsPlayMusic = true;
