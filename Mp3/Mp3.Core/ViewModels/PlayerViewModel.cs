@@ -56,7 +56,7 @@ namespace Mp3.Core.ViewModels
             {
                 _dataMusics = _listAllSongs;
             }
-            DoPlay();
+            //DoPlay();
         }
 
         private PlayList _pList;
