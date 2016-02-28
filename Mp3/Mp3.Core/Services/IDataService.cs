@@ -13,5 +13,6 @@ namespace Mp3.Core.Services
         int Delete(DataMusic dataMusic);
 
         int DeleteAll();
+        int X { get; set; }
     }
 }

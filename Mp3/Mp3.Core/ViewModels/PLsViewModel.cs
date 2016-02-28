@@ -33,7 +33,11 @@ namespace Mp3.Core.ViewModels
 
         public ICommand AddPlayListCommand
         {
-            get { return new MvxCommand(() => ShowViewModel<AddPLViewModel>()); }
+            get { return new MvxCommand(() =>
+            {
+                ShowViewModel<AddPLViewModel>();
+                Close(this);
+            }); }
 
 
         }
@@ -42,10 +46,26 @@ namespace Mp3.Core.ViewModels
         {
             get
             {
-                return new MvxCommand<PlayList>((item)=>ShowViewModel<PLViewModel>(new PlayList()
+                return new MvxCommand<PlayList>((item)=>
                 {
-                    IdPL = item.IdPL
-                }));
+                    ShowViewModel<PLViewModel>(new PlayList()
+                    {
+                        IdPL = item.IdPL
+                    });
+                    Close(this);
+                });
+            }
+        }
+
+        public ICommand MusicListCommand
+        {
+            get
+            {
+                return new MvxCommand(() =>
+                {
+                    ShowViewModel<MusicListViewModel>();
+                    Close(this);
+                });
             }
         }
     }

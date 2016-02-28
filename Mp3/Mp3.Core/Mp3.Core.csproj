@@ -47,12 +47,10 @@
     <Compile Include="Services\PlayListService.cs" />
     <Compile Include="ViewModels\AddPLViewModel.cs" />
     <Compile Include="ViewModels\EditPLViewModel.cs" />
-    <Compile Include="ViewModels\IGetMediaInfo.cs" />
     <Compile Include="ViewModels\MusicListViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
     <Compile Include="ViewModels\PLsViewModel.cs" />
     <Compile Include="ViewModels\PLViewModel.cs" />
-    <Compile Include="ViewModels\TestViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Binding, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">

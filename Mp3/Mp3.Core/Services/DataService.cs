@@ -19,11 +19,20 @@ namespace Mp3.Core.Services
             
         }
 
+
+        private int x;
+        public int X
+        {
+            get { return x; }
+            set { x = value; }
+        }
+
         public List<DataMusic> GetMusics()
         {
             return _sqLiteConnection.Table<DataMusic>().ToList();
         }
 
+        
         public int Insert(DataMusic dataMusic)
         {
             return _sqLiteConnection.Insert(dataMusic);
@@ -46,7 +55,7 @@ namespace Mp3.Core.Services
 
         public int Delete(DataMusic dataMusic)
         {
-            return _sqLiteConnection.Delete<DataMusic>(dataMusic);
+            return _sqLiteConnection.Delete<DataMusic>(dataMusic.Id);
         }
 
         public int DeleteAll()

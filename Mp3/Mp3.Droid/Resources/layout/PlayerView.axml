@@ -33,9 +33,9 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Pos"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/Btns">
+        android:layout_above="@+id/Btns"
+        android:id="@+id/Pos">
         <TextView
             android:text="0:00"
             android:textSize="20dp"
@@ -64,9 +64,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/Btns"
         android:layout_centerHorizontal="true"
-        android:layout_above="@+id/Vol">
+        android:layout_above="@+id/Volume">
         <Button
-            android:text="Favorite"
+            android:text="Fav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/FavoriteList"
@@ -82,7 +82,7 @@
             android:layout_width="60.0dp"
             android:layout_height="48.5dp"
             local:MvxBind="Click DoPlayCommand"
-            android:id="@+id/Play"
+            android:id="@+id/BtnPlay"
             android:src="@drawable/btnplay"
             android:layout_toRightOf="@+id/Prev"
             android:layout_toLeftOf="@+id/Next" />
@@ -94,17 +94,37 @@
             android:src="@drawable/btnnext"
             android:layout_toLeftOf="@+id/PlayLists" />
         <Button
-            android:text="PlayLists"
+            android:text="PL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             local:MvxBind="Click PlayListsCommand"
             android:id="@+id/PlayLists"
             android:layout_alignParentRight="true" />
     </RelativeLayout>
-    <SeekBar
+    <RelativeLayout
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        local:MvxBind="Progress"
-        android:id="@+id/Vol"
-        android:layout_alignParentBottom="true" />
+        android:layout_centerHorizontal="true"
+        android:id="@+id/Volume"
+        android:layout_alignParentBottom="true">
+        <ImageView
+            android:layout_height="20dp"
+            android:layout_width="17dp"
+            android:src="@drawable/voloff"
+            android:id="@+id/Vol0" />
+        <SeekBar
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            local:MvxBind="Progress"
+            android:id="@+id/Vol"
+            android:layout_toRightOf="@+id/Vol0"
+            android:layout_toLeftOf="@+id/Vol1" />
+        <ImageView
+            android:layout_height="20dp"
+            android:src="@drawable/volon"
+            android:id="@+id/Vol1"
+            android:layout_width="25dp"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
 </RelativeLayout>

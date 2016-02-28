@@ -19,9 +19,9 @@ namespace Mp3.Droid
         protected override void InitializeIoC()
         {
             base.InitializeIoC();
-            //Mvx.RegisterType<IPlayMusicService>(()=> new DroidPlayMusicService());
-            Mvx.RegisterType<ISoungsManagerService>(()=> new DroidSongsManagerService());
-            Mvx.RegisterType<IGetMediaInfo>(()=> new DroidGetMediInfo());
+            Mvx.RegisterSingleton<IPlayMusicService>(() => new DroidPlayMusicService());
+            Mvx.RegisterSingleton<ISoungsManagerService>(()=> new DroidSongsManagerService());
+            //Mvx.RegisterType<IGetMediaInfo>(()=> new DroidGetMediInfo());
         }
 
         //protected override void InitializeIoC()

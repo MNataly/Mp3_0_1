@@ -10,7 +10,6 @@ namespace Mp3.Core.ViewModels
 {
     public class PLViewModel : MvxViewModel
     {
-
         private readonly IPlayListsService _playListsService;
         private readonly IDataService _dataService;
         public PlayList PList = new PlayList();
@@ -39,12 +38,17 @@ namespace Mp3.Core.ViewModels
             }
             //_listSongs = PL.ListMusicsId as List<int>;
         }
+
         private List<DataMusic> _listAllSongs;
 
         public List<DataMusic> ListAllSongs
         {
             get { return _listAllSongs; }
-            set { _listAllSongs = value; RaisePropertyChanged(() => ListAllSongs); }
+            set
+            {
+                _listAllSongs = value;
+                RaisePropertyChanged(() => ListAllSongs);
+            }
         }
 
 
@@ -53,12 +57,21 @@ namespace Mp3.Core.ViewModels
         public List<DataMusic> ListSongs
         {
             get { return _listSongs; }
-            set { _listSongs = value; RaisePropertyChanged(() => ListSongs); }
+            set
+            {
+                _listSongs = value;
+                RaisePropertyChanged(() => ListSongs);
+            }
         }
+
         public List<PlayList> PlayLists
         {
             get { return _playLists; }
-            set { _playLists = value; RaisePropertyChanged(()=>PlayLists);}
+            set
+            {
+                _playLists = value;
+                RaisePropertyChanged(() => PlayLists);
+            }
         }
 
         private List<PlayList> _playLists;
@@ -67,33 +80,45 @@ namespace Mp3.Core.ViewModels
         {
             get
             {
-                return new MvxCommand(() => ShowViewModel<EditPLViewModel>
-                (new PlayList()
+                return new MvxCommand(() =>
                 {
-                    IdPL = PList.IdPL
-                }));
-               
+                    ShowViewModel<EditPLViewModel>
+                        (new PlayList()
+                        {
+                            IdPL = PList.IdPL
+                        });
+                    Close(this);
+                });
             }
         }
 
         public ICommand DeletePLCommand
         {
-            get { return new MvxCommand(() => DoDeletePL()); }
+            get { return new MvxCommand(() => { DoDeletePL(); Close(this); }); }
         }
 
         private void DoDeletePL()
         {
+            //_playListsService.DeleteAll();
             _playListsService.Delete(PList);
             ShowViewModel<PLsViewModel>();
         }
+
         public ICommand TapItemPlayCommand
         {
             get
             {
-                return new MvxCommand<DataMusic>((item) => ShowViewModel<PlayerViewModel>(new { IdDataMusic = item.Id, IdPList = PList.IdPL }
-                    ));
+                return new MvxCommand<DataMusic>((item) =>
+                {
+                    ShowViewModel<PlayerViewModel>(new
+                    {
+                        IdDataMusic = item.Id,
+                        IdPList = PList.IdPL
+                    }
+                        );
+                    Close(this);
+                });
             }
         }
-
     }
 }

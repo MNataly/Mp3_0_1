@@ -87,7 +87,11 @@ namespace Mp3.Core.ViewModels
 
         public ICommand SavePLCommand
         {
-            get { return new MvxCommand(() => UpdatePL()); }
+            get { return new MvxCommand(() =>
+            {
+                UpdatePL();
+                Close(this);
+            }); }
         }
     }
 }

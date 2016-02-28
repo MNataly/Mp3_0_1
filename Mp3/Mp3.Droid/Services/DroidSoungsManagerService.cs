@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Java.IO;
 using Mp3.Core.Services;
 using Mp3.Core.ViewModels;
+using Mp3.Droid.Services;
 using MvvmCross.Platform;
 
 
@@ -75,7 +76,7 @@ namespace Mp3.Droid.Service
             
             song.FilePath = file.Path;
             songsList.Add(song);
-            var _getDuration = Mvx.Resolve<IGetMediaInfo>();
+            DroidGetMediInfo _getDuration = new DroidGetMediInfo();
             song.Duration = _getDuration.GetDuration(song.FilePath);
             song.Artist = _getDuration.GetArtist(song.FilePath);
 

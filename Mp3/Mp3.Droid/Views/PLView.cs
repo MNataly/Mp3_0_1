@@ -4,7 +4,7 @@ using MvvmCross.Droid.Views;
 
 namespace Mp3.Droid.Views
 {
-    [Activity(Label = "Test")]
+    [Activity(Label = "PlayList View")]
     public class PLView : MvxActivity
     {
         protected override void OnCreate(Bundle bundle)

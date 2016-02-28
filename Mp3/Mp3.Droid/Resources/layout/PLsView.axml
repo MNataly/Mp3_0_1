@@ -10,6 +10,12 @@
         android:layout_height="wrap_content"
         local:MvxBind="Click AddPlayListCommand"
         android:id="@+id/AddPlayList" />
+    <Button
+        android:text="All Mussic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="Click MusicListCommand"
+        android:id="@+id/BtnMusicList" />
     <Mvx.MvxListView
         android:orientation="vertical"
         android:layout_width="fill_parent"

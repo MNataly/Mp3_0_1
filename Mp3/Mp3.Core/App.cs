@@ -19,7 +19,7 @@ namespace Mp3.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            RegisterAppStart<ViewModels.MusicListViewModel>();
+            RegisterAppStart<ViewModels.PlayerViewModel>();
             //Mvx.RegisterType<IMusicListViewModel>(() => new MusicListViewModel(IDataService dataServise));
              
         }

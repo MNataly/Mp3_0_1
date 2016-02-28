@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using Mp3.Core.Models.Messanger;
 using Mp3.Core.Services;
@@ -15,48 +16,112 @@ namespace Mp3.Core.ViewModels
         private IDataService _dataService;
         private IPlayListsService _playListsService;
 
-        private bool IsPlayMusic = false;
-        private bool NewPlaySong = true;
+        private bool IsPlayMusic;
+        private bool NewPlaySong;
 
-        public class ParamInit
-        {
-            public DataMusic dm { get; set; }
-            public PlayList playList { get; set; }
-        }
+        
 
         public PlayerViewModel(IDataService dataService, IPlayListsService playListsService)
         {
+           
             _dataService = dataService;
             _playListsService = playListsService;
-            _listAllSongs = _dataService.GetMusics();
+            
+            //_listAllSongs = _dataService.GetMusics();
             _pLists = playListsService.GetPlayLists();
+            IsPlayMusic = false;
+            NewPlaySong = true;
+
+
+            //if (_listAllSongs.Count == 0)
+            //{
+                DoList();
+                _listAllSongs = _dataService.GetMusics();
+            //}
+
         }
 
         public void Init(int IdDataMusic, int IdPList)
         {
-            _item = _listAllSongs.Find(item => item.Id == IdDataMusic);
-            if (IdPList != -1)
+            if (IdDataMusic != 0 && IdPList != 0)
             {
-                _pList = _pLists.Find(item => item.IdPL == IdPList);
-                foreach (var item in PLists)
+
+
+                _item = _listAllSongs.Find(item => item.Id == IdDataMusic);
+                if (IdPList != -1)
                 {
-                    string[] idStrings = _pList.ListMusicsId.Split(' ');
-                    _dataMusics = new List<DataMusic>();
-                    foreach (var i in idStrings)
+                    _pList = _pLists.Find(item => item.IdPL == IdPList);
+                    foreach (var item in PLists)
                     {
-                        if (i != "")
+                        string[] idStrings = _pList.ListMusicsId.Split(' ');
+                        _dataMusics = new List<DataMusic>();
+                        foreach (var i in idStrings)
                         {
-                            int x = Convert.ToInt32(i);
-                            _dataMusics.Add(_listAllSongs.Find(bk => bk.Id == x));
+                            if (i != "")
+                            {
+                                int x = Convert.ToInt32(i);
+                                _dataMusics.Add(_listAllSongs.Find(bk => bk.Id == x));
+                            }
                         }
                     }
+
                 }
+                else
+                {
+                    _dataMusics = _listAllSongs;
+                }
+
             }
             else
             {
+                _item = _listAllSongs[0];
                 _dataMusics = _listAllSongs;
+                IsPlayMusic = false;
+                NewPlaySong = true;
+                MyResolve(_item);
             }
-            //DoPlay();
+
+        }
+
+        //public override void Start()
+        //{
+        //    base.Start();
+        //    DoPlayCommand.Execute(null);
+        //}
+        private void DoList()
+        {
+            var listServise = Mvx.Resolve<ISoungsManagerService>();
+            _dataService.DeleteAll();
+            DataMusics = listServise.getPlayList;
+            foreach (var t in DataMusics)
+            {
+                int i = _dataService.Insert(t);
+            }
+            
+            
+            
+            //var listServise = Mvx.Resolve<ISoungsManagerService>();
+
+            //DataMusics = listServise.getPlayList;
+            //_dataService.DeleteAll();
+            //_dataService.InsertAll(DataMusics);
+            //foreach (var t in DataMusics)
+            //{
+            //    if (_listAllSongs.Find((bk) => bk.FilePath == t.FilePath)==null)
+            //    {
+            //        _dataService.Insert(t);
+            //        _listAllSongs.Add(t);
+            //    }
+
+            //}
+            //foreach (var t in _listAllSongs)
+            //{
+            //    if (DataMusics.Find((bk) => bk.FilePath == t.FilePath) == null)
+            //    {
+            //        _dataService.Delete(t);
+            //        _listAllSongs.Remove(t);
+            //    }
+            //}
         }
 
         private PlayList _pList;
@@ -134,10 +199,12 @@ namespace Mp3.Core.ViewModels
             }
         }
 
-        private void DoPlay()
+        public void DoPlay()
         {
             if (!IsPlayMusic)
                     {
+                        //NewPlaySong = true;
+                        //IsPlayMusic = false;
                         MyResolve(Item);
                         IsPlayMusic = true;
                     }
@@ -200,7 +267,11 @@ namespace Mp3.Core.ViewModels
         public ICommand PlayListsCommand
             
         {
-            get { return new MvxCommand(() => ShowViewModel<PLsViewModel>()); }
+            get { return new MvxCommand(() =>
+            {
+                ShowViewModel<PLsViewModel>();
+                Close(this);
+            }); }
             
         }
 
